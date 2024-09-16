@@ -34,6 +34,14 @@ const rules: FormRules = {
     message: "パスワードを入力してください",
   },
 };
+
+const login = async () => {
+  try {
+    await formRef.value?.validate();
+  } catch (error) {
+    console.error(error);
+  }
+};
 </script>
 
 <template>
@@ -45,7 +53,7 @@ const rules: FormRules = {
       <NFormItem label="パスワード" path="password">
         <NInput v-model:value="formValue.password" :type="'password'" />
       </NFormItem>
-      <NButton :attr-type="'submit'">
+      <NButton :attr-type="'submit'" @click="login">
         <span class="text-[14px]">ログイン</span>
       </NButton>
     </div>
