@@ -2,9 +2,9 @@
 import { NDataTable, type DataTableColumns } from "naive-ui";
 import type { Post } from "~/models/post";
 
-const { data: posts } = useFetch<Post[]>(
-  "https://jsonplaceholder.typicode.com/posts"
-);
+const api = useApi();
+const { data: posts } = useAsyncData<Post[]>(() => api("/posts"));
+
 
 const columns = computed<DataTableColumns<Post>>(() => [
   {
