@@ -38,6 +38,6 @@ const columns = computed<DataTableColumns<User>>(() => [
         <span class="text-[14px]">新規登録</span>
       </NButton>
     </div>
-    <NDataTable v-if="users" remote :data="users" :columns="columns" />
+    <NDataTable v-if="users" remote :data="users" :columns />
   </div>
 </template>
