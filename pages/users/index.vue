@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <NDataTable v-if="users" remote :data="users" :columns="columns" />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { NDataTable, type DataTableColumns } from "naive-ui";
 import type { User } from "~/models/user";
@@ -11,7 +5,6 @@ import type { User } from "~/models/user";
 const { data: users } = useFetch<User[]>(
   "https://jsonplaceholder.typicode.com/users"
 );
-
 
 const columns = computed<DataTableColumns<User>>(() => [
   {
@@ -36,3 +29,15 @@ const columns = computed<DataTableColumns<User>>(() => [
   },
 ]);
 </script>
+
+<template>
+  <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
+    <div class="flex flex-row items-center justify-between">
+      <span class="text-[24px] font-bold">Users</span>
+      <NButton @click="$router.push('/users/new')">
+        <span class="text-[14px]">新規登録</span>
+      </NButton>
+    </div>
+    <NDataTable v-if="users" remote :data="users" :columns="columns" />
+  </div>
+</template>
