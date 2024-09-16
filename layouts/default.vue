@@ -22,7 +22,7 @@ const menuOptions: MenuOption[] = [
 </script>
 
 <template>
-  <NLayout has-slider class="min-h-screen">
+  <NLayout has-sider class="min-h-screen">
     <NLayoutSider bordered class="min-h-screen">
       <NMenu :options="menuOptions" />
     </NLayoutSider>
