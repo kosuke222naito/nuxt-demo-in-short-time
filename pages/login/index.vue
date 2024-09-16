@@ -8,6 +8,8 @@ import {
 
 import type { FormInst, FormRules, } from "naive-ui";
 
+import type { User } from "~/models/user";
+
 definePageMeta({
   layout: "static",
 });
@@ -35,9 +37,13 @@ const rules: FormRules = {
   },
 };
 
+const api = useApi();
+
 const login = async () => {
   try {
     await formRef.value?.validate();
+
+    const res = await api<User>(`/users/${formValue.value.id}`);
   } catch (error) {
     console.error(error);
   }
